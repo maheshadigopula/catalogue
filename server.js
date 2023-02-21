@@ -146,8 +146,6 @@ function mongoConnect() {
 }
 }
 
-
-// Code 
 if (process.env.DOCUMENTDB == 'true') {
 function mongoConnect() {
     return new Promise((resolve, reject) => {
@@ -184,9 +182,11 @@ function mongoLoop() {
 }
 
 mongoLoop();
-
 // fire it up!
 const port = process.env.CATALOGUE_SERVER_PORT || '8080';
+const MONGO = process.env.MONGO || 'false';
+const DOCUMENTDB = process.env.DOCUMENTDB || 'false';
+
 app.listen(port, () => {
     logger.info('Started on port', port);
 });
