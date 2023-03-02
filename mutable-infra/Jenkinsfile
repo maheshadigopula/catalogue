@@ -1,0 +1,5 @@
+@Library('robot-shared-library@main') _
+
+env.REPONAME="catalogue"
+env.TF_DIRECTORY="mutable-infra"   // This value is only needed by Backend COmponents ; For Infra, you don't need it, becuase the code in the root directory.
+terraform()
