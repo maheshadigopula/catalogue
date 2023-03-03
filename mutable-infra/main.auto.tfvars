@@ -1,5 +1,5 @@
 COMPONENT   = "catalogue"
-APP_PORT    = 80
+APP_PORT    = 8080
 
 
 
