@@ -2,7 +2,10 @@
 
 env.COMPONENT="catalogue"
 env.APP="nodejs"
-nodejs()
+// nodejs()   # User this for non-docker 
+
+docker()
+
 
 
 

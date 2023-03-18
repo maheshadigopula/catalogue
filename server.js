@@ -148,7 +148,7 @@ app.get('/search/:text', (req, res) => {
 // Code for Document DB, 
 function mongoConnect() {
     return new Promise((resolve, reject) => {
-    var mongoURL = process.env.MONGO_URL || 'mongodb://admin1:roboshop1@mongodb:27017/catalogue?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false';
+    var mongoURL = process.env.MONGO_URL || 'mongodb://username:password@mongodb:27017/catalogue?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false';
     var client = mongoClient.connect(mongoURL,
       {
         tlsCAFile: `/home/roboshop/rds-combined-ca-bundle.pem` //Specify the DocDB; cert to be used, ensure it has to present on server
