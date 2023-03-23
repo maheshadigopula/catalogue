@@ -19,7 +19,10 @@ spec:
       - name: catalogue
         image: 355449129696.dkr.ecr.us-east-1.amazonaws.com/catalogue:4.0.0
         ports:
-        - containerPort: 80 
+        - containerPort: 8080
+        envFrom: 
+          - configMapRef: 
+              name: catalogue-configmap
 --- 
 
 apiVersion: v1
@@ -32,8 +35,16 @@ spec:
     app: catalogue
   ports:
     - protocol: TCP
-      port: 80              # Port number of the service that it has to listen on 
-      targetPort: 80        # Port number of the container that it has to forward to
+      port: 8080              # Port number of the service that it has to listen on 
+      targetPort: 8080        # Port number of the container that it has to forward to
+
+--- 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: catalogue-configmap 
+data:
+    MONGO_URL: "mongodb://admin1:roboshop1@roboshop-dev-docdb.cluster-c93whrwsdihk.us-east-1.docdb.amazonaws.com:27017/?ssl=true&ssl_ca_certs=rds-combined-ca-bundle.pem&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
 
 ---
 # Ingress Resource
@@ -54,4 +65,5 @@ spec:
             name: catalogue-svc
             port:
               number: 80
-  ingressClassName: nginx
+  ingressClassName: nginx 
+
