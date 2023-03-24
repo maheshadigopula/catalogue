@@ -51,18 +51,17 @@ data:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-myservicea
+  name: catalogue-ingress
 spec:
-  rules:
-  - host: catalogue.robos-shop.online
-    http:
-      paths:
-      - path: "/"
-        pathType: Prefix
-        backend:
-          service:
-            name: catalogue-svc
-            port:
-              number: 8080
-  ingressClassName: nginx 
+   rules:
+     - http:
+        paths:
+        - path: "/"
+          pathType: Prefix
+          backend:
+            service:
+              name: catalogue-svc
+              port:
+                number: 8080
+   ingressClassName: nginx
 
