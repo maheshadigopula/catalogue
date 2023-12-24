@@ -1,3 +1,3 @@
 @Library('robot-shared-library') _
 
-nodejs(catalogue)
+nodejs("catalogue")
